@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JigarTube</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
+}
+
+header {
+  background: #181818;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+}
+
+#search {
+  flex: 1;
+  max-width: 600px;
+  padding: 12px 18px;
+  border-radius: 25px;
+  border: 1px solid #555;
+  background: #222;
+  color: white;
+  font-size: 16px;
+}
+
+button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.searchBtn {
+  background: #333;
+  color: white;
+}
+
+.upload {
+  background: red;
+  color: white;
+}
+
+nav {
+  background: #181818;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+nav button {
+  background: #292929;
+  color: white;
+}
+
+main {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.video {
+  cursor: pointer;
+}
+
+.thumbnail {
+  height: 180px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #222, #555);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 65px;
+}
+
+.video h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.video p {
+  color: #ccc;
+}
+
+.video span {
+  color: #888;
+}
+
+.video:hover .thumbnail {
+  transform: scale(1.02);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">▶ JigarTube</div>
+
+<input id="search" placeholder="Qidirish...">
+
+<button class="searchBtn" onclick="searchVideo()">🔍</button>
+
+<button class="upload">＋ Video yuklash</button>
+
+</header>
+
+<nav>
+<button onclick="showAll()">🏠 Bosh sahifa</button>
+<button>🔥 Trend</button>
+<button>🎮 O‘yinlar</button>
+<button>🎵 Musiqa</button>
+<button>🤖 Robotexnika</button>
+</nav>
+
+<main id="videos">
+
+<div class="video">
+<div class="thumbnail">🤖</div>
+<h2>Arduino bilan robot yasash</h2>
+<p>Robot MAX</p>
+<span>1.2K ko‘rish • 2 kun oldin</span>
+</div>
+
+<div class="video">
+<div class="thumbnail">🎮</div>
+<h2>Arduino Dino o‘yini</h2>
+<p>Jigar Gaming</p>
+<span>850 ko‘rish • 1 kun oldin</span>
+</div>
+
+<div class="video">
+<div class="thumbnail">🚗</div>
+<h2>Arduino mashina yasash</h2>
+<p>Tech Uz</p>
+<span>3.4K ko‘rish • 5 kun oldin</span>
+</div>
+
+<div class="video">
+<div class="thumbnail">🦾</div>
+<h2>Eng kuchli robot</h2>
+<p>Robot Channel</p>
+<span>5.1K ko‘rish • 1 hafta oldin</span>
+</div>
+
+</main>
+
+<script>
+
+function searchVideo() {
+
+let text = document.getElementById("search").value.toLowerCase();
+
+let videos = document.querySelectorAll(".video");
+
+videos.forEach(function(video) {
+
+let title = video.querySelector("h2").innerText.toLowerCase();
+
+if (title.includes(text)) {
+video.style.display = "block";
+} else {
+video.style.display = "none";
+}
+
+});
+
+}
+
+function showAll() {
+
+document.querySelectorAll(".video").forEach(function(video) {
+video.style.display = "block";
+});
+
+document.getElementById("search").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
